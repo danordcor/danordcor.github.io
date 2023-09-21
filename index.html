@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcela 21 de septiembre</title>
+    <style>
+        body {
+            background-color: #87CEEB;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .centro {
+            text-align: center;
+        }
+
+        .centro span {
+            font-size: 100px;
+        }
+
+        .titulo {
+            font-size: 24px;
+            color: purple;
+        }
+
+        /* Estilo para el botón */
+        #playButton {
+            width: 100px; /* Ancho fijo del botón */
+            height: 100px; /* Alto fijo del botón */
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Estilo para la imagen dentro del botón */
+        #playButton img {
+            width: 100%; /* Ajustar la imagen al tamaño del botón */
+            height: 100%; /* Ajustar la imagen al tamaño del botón */
+        }
+    </style>
+</head>
+<body>
+    <div class="centro">
+        <span>🌻</span>
+        <div class="titulo">Marcela 21 de septiembre</div>
+        <button id="playButton"><img src="play.png" alt="Reproducir"></button>
+    </div>
+
+    <!-- Reproductor de audio oculto -->
+    <audio id="audio" style="display: none">
+        <source src="flor.mp3" type="audio/mpeg">
+        Tu navegador no admite el elemento de audio.
+    </audio>
+
+    <script>
+        // Obtener el elemento de audio y el botón
+        var audio = document.getElementById("audio");
+        var playButton = document.getElementById("playButton");
+
+        // Variable para controlar el estado de reproducción
+        var playing = false;
+
+        // Agregar un evento clic al botón para controlar la reproducción
+        playButton.addEventListener("click", function() {
+            if (!playing) {
+                audio.play();
+                playing = true;
+                playButton.innerHTML = '<img src="pause.png" alt="Pausar">';
+            } else {
+                audio.pause();
+                playing = false;
+                playButton.innerHTML = '<img src="play.png" alt="Reproducir">';
+            }
+        });
+    </script>
+</body>
+</html>
