@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcela 21 de septiembre</title>
+    <title>Sunflower</title>
     <style>
         body {
             background-color: #87CEEB;
@@ -14,66 +14,71 @@
             margin: 0;
         }
 
-        .centro {
+        .center {
             text-align: center;
         }
 
-        .centro span {
+        .center span {
             font-size: 100px;
         }
 
-        .titulo {
+        .title {
+            font-size: 28px;
+            color: purple;
+        }
+
+	.date {
             font-size: 24px;
             color: purple;
         }
 
-        /* Estilo para el botón */
         #playButton {
-            width: 100px; /* Ancho fijo del botón */
-            height: 100px; /* Alto fijo del botón */
+            width: 100px;
+            height: 40px;
             background: none;
             border: none;
             cursor: pointer;
         }
 
-        /* Estilo para la imagen dentro del botón */
         #playButton img {
-            width: 100%; /* Ajustar la imagen al tamaño del botón */
-            height: 100%; /* Ajustar la imagen al tamaño del botón */
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
 <body>
-    <div class="centro">
+    <div class="center">
         <span>🌻</span>
-        <div class="titulo">Marcela 21 de septiembre</div>
-        <button id="playButton"><img src="play.png" alt="Reproducir"></button>
+        <div class="title" id="title">Marcela Cabrera</div>
+	<div class="date" id="date">Marcela 21 de septiembre</div>
+        <button id="playButton"><img src="play.png" alt="Play"></button>
     </div>
 
-    <!-- Reproductor de audio oculto -->
     <audio id="audio" style="display: none">
         <source src="flor.mp3" type="audio/mpeg">
-        Tu navegador no admite el elemento de audio.
+        Your browser does not support the audio element.
     </audio>
 
     <script>
-        // Obtener el elemento de audio y el botón
         var audio = document.getElementById("audio");
         var playButton = document.getElementById("playButton");
-
-        // Variable para controlar el estado de reproducción
         var playing = false;
+        var urlParams = new URLSearchParams(window.location.search);
+        var victim = urlParams.get("victima");
 
-        // Agregar un evento clic al botón para controlar la reproducción
+        if (victim) {
+            document.getElementById("title").textContent = victim;
+        }
+
         playButton.addEventListener("click", function() {
             if (!playing) {
                 audio.play();
                 playing = true;
-                playButton.innerHTML = '<img src="pause.png" alt="Pausar">';
+                playButton.innerHTML = '<img src="pause.png" alt="Pause">';
             } else {
                 audio.pause();
                 playing = false;
-                playButton.innerHTML = '<img src="play.png" alt="Reproducir">';
+                playButton.innerHTML = '<img src="play.png" alt="Play">';
             }
         });
     </script>
